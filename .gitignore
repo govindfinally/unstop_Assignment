@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Runtime logs & generated reports
+logs/
+reports/
+reportscls/
+
+# Private AI handoff logs & interview notes (keep local, exclude from submission)
+.ai_context/
+interview_preparation.txt
+reports_hf/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

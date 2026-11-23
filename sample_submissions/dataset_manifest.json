@@ -1,0 +1,149 @@
+{
+  "dataset_name": "Unstop Multimodal Integrity Benchmark v1",
+  "total_files": 15,
+  "format_counts": {
+    "pdf": 6,
+    "docx": 6,
+    "mp4": 3
+  },
+  "data_compliance": "100% synthetic original business case studies and open-style reference summaries.",
+  "files": [
+    {
+      "document_id": "sub_01_vertical_orig.pdf",
+      "modality": "pdf",
+      "expected_flagged": true,
+      "expected_category": "peer_and_cross_modal",
+      "related_files": [
+        "sub_02_vertical_copy.docx",
+        "sub_03_pitch_copied.mp4"
+      ],
+      "notes": "3-page PDF with headers/footers; copied by sub_02 (exact) and sub_03 (MP4 speech on p.2)."
+    },
+    {
+      "document_id": "sub_02_vertical_copy.docx",
+      "modality": "docx",
+      "expected_flagged": true,
+      "expected_category": "peer_exact_copy",
+      "related_files": [
+        "sub_01_vertical_orig.pdf",
+        "sub_03_pitch_copied.mp4"
+      ],
+      "notes": "Exact copy of sub_01 fragmented with Enter-spam every 6 words to test anti-gaming chunking."
+    },
+    {
+      "document_id": "sub_03_pitch_copied.mp4",
+      "modality": "mp4",
+      "expected_flagged": true,
+      "expected_category": "cross_modal_copy",
+      "related_files": [
+        "sub_01_vertical_orig.pdf",
+        "sub_02_vertical_copy.docx"
+      ],
+      "notes": "Scenario 1: Spoken English MP4 reading sub_01 p.2 with 'um/uh/ah' fillers."
+    },
+    {
+      "document_id": "sub_04_coldchain_a.docx",
+      "modality": "docx",
+      "expected_flagged": true,
+      "expected_category": "peer_paraphrase",
+      "related_files": [
+        "sub_05_coldchain_paraphrase.docx"
+      ],
+      "notes": "Scenario 2: Original cold-chain text heavily paraphrased by sub_05."
+    },
+    {
+      "document_id": "sub_05_coldchain_paraphrase.docx",
+      "modality": "docx",
+      "expected_flagged": true,
+      "expected_category": "peer_paraphrase",
+      "related_files": [
+        "sub_04_coldchain_a.docx"
+      ],
+      "notes": "Scenario 2: Synonym-swapped paraphrase of sub_04."
+    },
+    {
+      "document_id": "sub_06_external_wiki.pdf",
+      "modality": "pdf",
+      "expected_flagged": true,
+      "expected_category": "external_plagiarism",
+      "related_files": [
+        "ref_maritime_supply_chains.txt"
+      ],
+      "notes": "Copies external reference article from external_knowledge/."
+    },
+    {
+      "document_id": "sub_07_ai_generated.docx",
+      "modality": "docx",
+      "expected_flagged": true,
+      "expected_category": "ai_generated",
+      "related_files": [],
+      "notes": "Uniform, formal LLM-styled prose to test AI-generation signal."
+    },
+    {
+      "document_id": "sub_08_honest_prompt_1.pdf",
+      "modality": "pdf",
+      "expected_flagged": false,
+      "expected_category": "honest_shared_prompt",
+      "related_files": [],
+      "notes": "Scenario 4: Shares 150-word exam prompt + original solar microgrid answer."
+    },
+    {
+      "document_id": "sub_09_honest_prompt_2.pdf",
+      "modality": "pdf",
+      "expected_flagged": false,
+      "expected_category": "honest_shared_prompt",
+      "related_files": [],
+      "notes": "Scenario 4: Shares 150-word exam prompt + original kirana fintech answer."
+    },
+    {
+      "document_id": "sub_10_honest_prompt_3.pdf",
+      "modality": "pdf",
+      "expected_flagged": false,
+      "expected_category": "honest_shared_prompt",
+      "related_files": [],
+      "notes": "Scenario 4: Shares 150-word exam prompt + original agri-tech answer."
+    },
+    {
+      "document_id": "sub_11_honest_prompt_4.docx",
+      "modality": "docx",
+      "expected_flagged": false,
+      "expected_category": "honest_shared_prompt",
+      "related_files": [],
+      "notes": "Scenario 4: Shares 150-word exam prompt + original EV fleet answer."
+    },
+    {
+      "document_id": "sub_12_honest_prompt_5.docx",
+      "modality": "docx",
+      "expected_flagged": false,
+      "expected_category": "honest_shared_prompt",
+      "related_files": [],
+      "notes": "Scenario 4: Shares 150-word exam prompt + original ed-tech answer."
+    },
+    {
+      "document_id": "sub_13_pitch_original.mp4",
+      "modality": "mp4",
+      "expected_flagged": false,
+      "expected_category": "honest_original_video",
+      "related_files": [],
+      "notes": "Original spoken MP4 pitch (rural healthcare ultrasound) to verify zero false positives."
+    },
+    {
+      "document_id": "sub_14_corrupt_empty.pdf",
+      "modality": "pdf",
+      "expected_flagged": false,
+      "expected_category": "degraded_empty",
+      "expected_status": "skipped_empty",
+      "related_files": [],
+      "notes": "Scenario 3: 0-byte empty PDF; must warn & skip without crashing."
+    },
+    {
+      "document_id": "sub_15_silent_video.mp4",
+      "modality": "mp4",
+      "expected_flagged": false,
+      "expected_category": "degraded_silent_video",
+      "expected_status": "skipped_no_audio",
+      "related_files": [],
+      "notes": "Scenario 3: Valid MP4 with silent audio track; must warn & skip without crashing."
+    }
+  ]
+}
